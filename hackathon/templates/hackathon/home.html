@@ -1,15 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <title>Django SAAGIE</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 
 <body>
-    <h1>Hello Woreld!</h1>lo
+    <div class="row">
+        <div class="col-md-2">
+            <section class="text-center">
+                <img class="mb-4" src="https://www.estiam.education/wp-content/uploads/2021/12/estiam_logo_PARIS.png" alt="" width="72" height="72">
+                <div class="col-md-12">
+                    <div class="form-signin row">
+                        <h1 class="h3 mb-3 font-weight-normal">Groupe 18 Hackaton</h1>
+                        <label for="inputEmail" class="sr-only">Email address</label>
+
+                        <button class="btn btn-lg btn-primary btn-block" onclick="loadDoc()" type="submit">Listes des audits</button>
+                        <button class="btn btn-lg btn-primary btn-block" onclick="copyProject()" type="submit">copier/coller du contenu </button>
+                        <button class="btn btn-lg btn-primary btn-block" onclick="restoreProject()" type="submit">backup/restore projet</button>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-8">
+            <p id="demo">
+                <table class="table table-responsive">
+                    <tr></tr>
+                </table>
+            </p>
+        </div>
+        <div class="col-md-2">
+
+        </div>
+    </div>
+    <p class="mt-5 mb-3 text-muted">&copy; [ESTIAM] G18 Hackathon</p>
+    <script>
+        function loadDoc() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("demo").innerHTML =
+                        this.responseText;
+                }
+            };
+            xhttp.open("GET", "http://0.0.0.0:8080/hackathon/", true);
+            xhttp.send();
+        }
+
+        function copyProject() {
+
+        }
+
+        function restoreProject() {
+
+        }
+    </script>
 </body>
 
 </html>
