@@ -85,7 +85,9 @@ def index(request):
 
     newProject = copyProject(token, project["data"]["project"]["name"], project["data"]["project"]["description"])
     print(newProject)
-
+    file = open('copyProject.txt', 'w')
+    file.write(newProject)
+    file.close()
     return  JsonResponse(response)
     
 

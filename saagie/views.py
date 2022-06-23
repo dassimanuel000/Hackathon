@@ -11,3 +11,6 @@ def restore(request):
 
 def audit(request):
     return render(request, "hackathon/home.html")
+
+def copy():
+    return ""
