@@ -60,8 +60,6 @@
                         document.getElementById("demo").innerHTML += "<br>" + rest["info"]["data"]["rights"][index]["name"];
                     }
                     document.getElementById("demo").innerHTML += "</td> </tr>";
-                    document.getElementById("rights").innerHTML = rest["info"]["data"]["rights"];
-                    alert();
                 }
             };
             xhttp.open("GET", "http://0.0.0.0:8080/hackathon/", true);
@@ -89,7 +87,7 @@
                 confirmButtonText: 'Call Saagie API',
                 showLoaderOnConfirm: true,
                 preConfirm: (login) => {
-                    return fetch(`//api.github.com/users/${login}`)
+                    return fetch(`https://demo-workspace.a4.saagie.io/gateway/api/graphiql/${login}`)
                         .then(response => {
                             if (!response.ok) {
                                 throw new Error(response.statusText)
@@ -98,7 +96,7 @@
                         })
                         .catch(error => {
                             Swal.showValidationMessage(
-                                `Request failed: ${error}`
+                                `Acces Denied: ${error}`
                             )
                         })
                 },
@@ -114,7 +112,21 @@
         }
 
         function BackupProject() {
-
+            Swal.fire({
+                title: 'Vous allez sauvegarder le fichier ?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'Save',
+                denyButtonText: `Don't save`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    BackupProjectd();
+                    Swal.fire('Saved!', '', 'success');
+                } else if (result.isDenied) {
+                    Swal.fire('Aucune sauvegarde ', '', 'info');
+                }
+            })
         }
 
         function BackupProjectd() {

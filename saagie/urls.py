@@ -18,11 +18,11 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    #path('', include('hackathon.urls')),
+    path('', views.home, name="home"),
     #path('audit/', include('hackathon.urls')),
     path('audit/', views.audit, name="audit"),
     path('hackathon/', include('hackathon.urls')),
     path('admin/', admin.site.urls),
     path('restor/', views.restore, name='restore'),
-    path('copy/', views.copy, name="copy"),
+    #path('copy/', views.copy, name="copy"),
 ]
